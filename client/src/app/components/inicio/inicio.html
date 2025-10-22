@@ -1,0 +1,66 @@
+<mat-card class="m-2">
+  <mat-card-content>
+    <div class="row justify-content-center align-items-center g-3 p-3">
+      <div class="col">
+        <h3>Guarde e gerencie suas anotações com o NoteKeeper</h3>
+
+        <p class="mt-4 fs-6">
+          Dê vida às suas ideias. O NoteKeeper é o lugar ideal para registrar pensamentos, planejar
+          tarefas e manter tudo em ordem - rápido, intuitivo e disponível onde você estiver.
+        </p>
+
+        <ul class="fs-6">
+          <li>✏️ Anote ideias, lembretes e planos em segundos.</li>
+          <li>🗂️ Organize por categorias, cores e prioridades.</li>
+          <li>🔒 Mantenha tudo seguro, com seus dados sempre protegidos.</li>
+        </ul>
+
+        <p class="fs-6">
+          Experimente agora e descubra uma forma mais simples de organizar o seu dia a dia.
+        </p>
+      </div>
+
+      <div class="col-lg-2">
+        <img class="img-fluid" src="/img/inicio-notas.svg" alt="Uma mão escrevendo." />
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="row g-3 m-2">
+  <div class="col-lg-3 card-column">
+    <mat-card class="classroom-card">
+      <a routerLink="/categorias" class="card-hero" style="--hero-url: url('/img/card-header.jpg')">
+        <h4 class="card-hero__title">Categorias</h4>
+      </a>
+
+      <mat-card-content></mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions align="end">
+        <a routerLink="/categorias" mat-icon-button matTooltip="Ir para Categorias">
+          <mat-icon>arrow_outward</mat-icon>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="col-lg-3 card-column">
+    <mat-card class="classroom-card">
+      <a routerLink="/notas" class="card-hero" style="--hero-url: url('/img/card-header.jpg')">
+        <h4 class="card-hero__title">Notas</h4>
+      </a>
+
+      <mat-card-content></mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions align="end">
+        <a routerLink="/notas" mat-icon-button matTooltip="Ir para Notas">
+          <mat-icon>arrow_outward</mat-icon>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
