@@ -5,6 +5,9 @@ import { map, Observable } from 'rxjs';
 import {
   CadastrarCategoriaModel,
   CadastrarCategoriaResponseModel,
+  DetalhesCategoriaModel,
+  EditarCategoriaModel,
+  EditarCategoriaResponseModel,
   ListagemCategoriasApiResponse,
   ListagemCategoriasModel,
 } from './categoria.models';
@@ -21,6 +24,21 @@ export class CategoriaService {
     categoriaModel: CadastrarCategoriaModel,
   ): Observable<CadastrarCategoriaResponseModel> {
     return this.http.post<CadastrarCategoriaResponseModel>(this.apiUrl, categoriaModel);
+  }
+
+  public editar(
+    id: string,
+    editarCategoriaModel: EditarCategoriaModel,
+  ): Observable<EditarCategoriaResponseModel> {
+    const urlCompleto = `${this.apiUrl}/${id}`;
+
+    return this.http.put<EditarCategoriaResponseModel>(urlCompleto, editarCategoriaModel);
+  }
+
+  public selecionarPorId(id: string): Observable<DetalhesCategoriaModel> {
+    const urlCompleto = `${this.apiUrl}/${id}`;
+
+    return this.http.get<DetalhesCategoriaModel>(urlCompleto);
   }
 
   public selecionarTodas(): Observable<ListagemCategoriasModel[]> {
