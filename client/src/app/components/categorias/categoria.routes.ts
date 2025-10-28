@@ -5,6 +5,7 @@ import { inject } from '@angular/core';
 import { ListagemCategoriasModel } from './categoria.models';
 import { CategoriaService } from './categoria.service';
 import { EditarCategoria } from './editar/editar-categoria';
+import { ExcluirCategoria } from './excluir/excluir-categoria';
 
 const listagemCategoriasResolver: ResolveFn<ListagemCategoriasModel[]> = () => {
   const categoriaService = inject(CategoriaService);
@@ -35,6 +36,11 @@ export const categoriaRoutes: Routes = [
       {
         path: 'editar/:id',
         component: EditarCategoria,
+        resolve: { categoria: detalhesCategoriaResolver },
+      },
+      {
+        path: 'excluir/:id',
+        component: ExcluirCategoria,
         resolve: { categoria: detalhesCategoriaResolver },
       },
     ],
