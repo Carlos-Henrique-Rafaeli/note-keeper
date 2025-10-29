@@ -1,14 +1,25 @@
-import { Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, Routes } from '@angular/router';
 import { NotaService } from './nota.service';
 import { ListarNotas } from './listar/listar-notas';
 import { inject } from '@angular/core';
 import { CadastrarNota } from './cadastrar/cadastrar-nota';
 import { CategoriaService } from '../categorias/categoria.service';
+import { EditarNota } from './editar/editar-nota';
 
 const listagemNotasResolver = () => {
   const notaService = inject(NotaService);
 
   return notaService.selecionarTodas();
+};
+
+const detalhesNotaResolver = (route: ActivatedRouteSnapshot) => {
+  const notaService = inject(NotaService);
+
+  if (!route.paramMap.has('id')) throw new Error('O parâmetro id não foi fornecido.');
+
+  const notaId = route.paramMap.get('id')!;
+
+  return notaService.selecionarPorId(notaId);
 };
 
 const listagemCategoriasResolver = () => {
@@ -26,6 +37,11 @@ export const notaRoutes: Routes = [
         path: 'cadastrar',
         component: CadastrarNota,
         resolve: { categorias: listagemCategoriasResolver },
+      },
+      {
+        path: 'editar/:id',
+        component: EditarNota,
+        resolve: { nota: detalhesNotaResolver, categorias: listagemCategoriasResolver },
       },
     ],
     providers: [NotaService, CategoriaService],
