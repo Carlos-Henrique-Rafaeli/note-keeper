@@ -5,6 +5,7 @@ import { inject } from '@angular/core';
 import { CadastrarNota } from './cadastrar/cadastrar-nota';
 import { CategoriaService } from '../categorias/categoria.service';
 import { EditarNota } from './editar/editar-nota';
+import { ExcluirNota } from './excluir/excluir-nota';
 
 const listagemNotasResolver = () => {
   const notaService = inject(NotaService);
@@ -42,6 +43,11 @@ export const notaRoutes: Routes = [
         path: 'editar/:id',
         component: EditarNota,
         resolve: { nota: detalhesNotaResolver, categorias: listagemCategoriasResolver },
+      },
+      {
+        path: 'excluir/:id',
+        component: ExcluirNota,
+        resolve: { nota: detalhesNotaResolver },
       },
     ],
     providers: [NotaService, CategoriaService],
