@@ -9,7 +9,7 @@
 
   padding: 0 10px;
 
-  background-color: #810081;
+  background-color: var(--mat-sys-on-primary);
 }
 
 .sidenav .mat-toolbar {
@@ -20,5 +20,5 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #810081;
+  background-color: var(--mat-sys-on-primary);
 }

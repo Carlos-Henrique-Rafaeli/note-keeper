@@ -7,7 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>NoteKeeper</mat-toolbar>
     <mat-nav-list>
       @for (link of linksNavbar; track $index) {
         <a mat-list-item [routerLink]="link.link">
@@ -24,7 +24,6 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>NoteKeeper</span>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
