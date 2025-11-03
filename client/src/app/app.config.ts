@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
 import { provideNotifications } from './components/shared/notificacao/notificacao.provider';
+import { provideAuth } from './components/auth/auth.provider';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -35,5 +36,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
 
     provideNotifications(),
+    provideAuth(),
   ],
 };
