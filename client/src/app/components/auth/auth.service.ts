@@ -5,6 +5,7 @@ import { inject, Injectable } from '@angular/core';
 import { AccessTokenModel, LoginModel, RegistroModel } from './auth.models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { obterOpcoesHeaderAutorizacao } from '../../util/obter-opcoes-header-autorizacao';
 
 @Injectable()
 export class AuthService {
@@ -39,7 +40,11 @@ export class AuthService {
     const urlCompleto = `${this.apiUrl}/sair`;
 
     return this.http
-      .post<null>(urlCompleto, {})
+      .post<null>(
+        urlCompleto,
+        {},
+        obterOpcoesHeaderAutorizacao(this.accessTokenSubject$.getValue()),
+      )
       .pipe(tap(() => this.accessTokenSubject$.next(undefined)));
   }
 }
