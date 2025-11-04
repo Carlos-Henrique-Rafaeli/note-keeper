@@ -9,7 +9,6 @@ import { provideNotifications } from './components/shared/notificacao/notificaca
 import { provideAuth } from './components/auth/auth.provider';
 import { map, take } from 'rxjs';
 import { AuthService } from './components/auth/auth.service';
-import { provideHttpClient } from '@angular/common/http';
 
 const usuarioDesconhecidoGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
@@ -65,7 +64,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(),
 
     provideNotifications(),
     provideAuth(),
