@@ -1,4 +1,14 @@
-import { BehaviorSubject, defer, merge, Observable, of, shareReplay, skip, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  defer,
+  distinctUntilChanged,
+  merge,
+  Observable,
+  of,
+  shareReplay,
+  skip,
+  tap,
+} from 'rxjs';
 
 import { inject, Injectable } from '@angular/core';
 
@@ -22,7 +32,7 @@ export class AuthService {
 
     if (!accessToken) return of(undefined);
 
-    const valido = new Date(accessToken.expiracao) > new Date();
+    const valido = accessToken.expiracao > new Date();
 
     if (!valido) return of(undefined);
 
@@ -33,6 +43,7 @@ export class AuthService {
     this.accessTokenArmazenado$,
     this.accessTokenSubject$.pipe(skip(1)),
   ).pipe(
+    distinctUntilChanged((a, b) => a === b),
     tap((accessToken) => {
       if (accessToken) this.salvarAccessToken(accessToken);
       else this.limparAccessToken();

@@ -48,7 +48,8 @@ public class AccessTokenProvider
                 new SymmetricSecurityKey(chaveEmBytes),
                 SecurityAlgorithms.HmacSha256Signature
             ),
-            Expires = expiracaoJwt
+            Expires = expiracaoJwt,
+            NotBefore = DateTime.UtcNow
         };
 
         var token = tokenHandler.CreateToken(tokenDescriptor);
